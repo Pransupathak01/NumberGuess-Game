@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
         color:'white',
         fontSize:24,
         fontWeight:'bold',
-        minWidth:'80%'
+        minWidth:'80%',
 
     }
 })

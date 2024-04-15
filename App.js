@@ -10,6 +10,7 @@ import GameOverScreen from "./screens/GameOverScreen";
 export default function App() {
   const [userNumber, setuserNumber]=useState();
   const [gameOver, setGameOver]=useState(false);
+  const [guessRounds, setGuessRounds] = useState(0);
 
   const[fontLoaded]=useFonts({
    // Inter_900Black
@@ -24,12 +25,14 @@ export default function App() {
     setuserNumber(pickedNumber);
     setGameOver(false);
   }
-  const gameOverHandler =() =>{
+  const gameOverHandler =(numberOfRounds) =>{
     setGameOver(true);
+    setGuessRounds(numberOfRounds);
   }
   const gameStartHandler = () =>{
     setGameOver(false)
-    setuserNumber('')
+    setuserNumber(null)
+    setGuessRounds(0)
   }
 
   let screen = <StartGameScreen onPickNumber={pickedNumberHandler}/>
@@ -37,7 +40,7 @@ export default function App() {
     screen =<GameScreen userNumber={userNumber} onGameOver={gameOverHandler}/>
   }
   if(gameOver && userNumber ){
-    screen = <GameOverScreen onGameStart={gameStartHandler}/>
+    screen = <GameOverScreen userNumber={userNumber} roundsNumber={guessRounds} onGameStart={gameStartHandler}/>
   }
   
   return (

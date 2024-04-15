@@ -1,4 +1,4 @@
-import { View, Text, Pressable, StyleSheet } from "react-native";
+import { View, Text, Pressable, StyleSheet, Platform } from "react-native";
 import Colors from "../constants/colors";
 const PrimaryButton = ({ children, style, onPress }) => {
   
@@ -18,7 +18,7 @@ export default PrimaryButton;
 const styles = StyleSheet.create({
   buttonOuterContainer: {
     borderRadius: 28,
-    margin: 4,
+    margin: Platform.OS === 'web' ? 16 :4,
     overflow: 'hidden'
   },
   buttonInnerContainer: {   
