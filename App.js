@@ -3,9 +3,11 @@ import { useFonts } from "expo-font";
 import { Inter_900Black } from '@expo-google-fonts/inter';
 import { SafeAreaView, ImageBackground, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { StatusBar } from "expo-status-bar";
 import StartGameScreen from "./screens/StartGameScreen";
 import GameScreen from "./screens/GameScreen";
 import GameOverScreen from "./screens/GameOverScreen";
+
 
 export default function App() {
   const [userNumber, setuserNumber]=useState();
@@ -44,6 +46,8 @@ export default function App() {
   }
   
   return (
+    <>
+    <StatusBar style="light"/>
     <LinearGradient colors={["#212F3C", "#ECF0F1"]} style={styles.rootScreen}>
       <ImageBackground
         source={require("./assets/dice.png")}
@@ -54,6 +58,7 @@ export default function App() {
         <SafeAreaView style={styles.rootScreen}>{screen}</SafeAreaView>
       </ImageBackground>
     </LinearGradient>
+    </>
   );
 }
 const styles = StyleSheet.create({
